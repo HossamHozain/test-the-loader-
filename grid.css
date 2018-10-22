@@ -1,0 +1,254 @@
+*{margin: 0;-webkit-box-sizing: border-box;box-sizing: border-box;padding: 1px;font-family:sans-serif;}
+/* loading  */
+.loadercontainer{
+  background:rgb(255, 245, 227);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: .1px;
+}
+.loader2{
+  width: 200px;
+  height: 60px;
+  margin: 250px auto;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content2{
+  width:8px;
+  height: 10px;
+  margin-left: 2px;
+  background-color:rgb(250, 161, 161);
+  animation: loading2 1.5s   ease-in-out infinite alternate
+}
+.loader2 div:nth-child(1){animation-delay: .1s;}
+.loader2 div:nth-child(2){animation-delay: .2s;}
+.loader2 div:nth-child(3){animation-delay: .3s;}
+.loader2 div:nth-child(4){animation-delay: .4s;}
+.loader2 div:nth-child(5){animation-delay: .5s;}
+.loader2 div:nth-child(6){animation-delay: .6s;}
+.loader2 div:nth-child(7){animation-delay: .7s;}
+.loader2 div:nth-child(8){animation-delay: .8s;}
+.loader2 div:nth-child(9){animation-delay: .9s;}
+.loader2 div:nth-child(10){animation-delay: 1s;}
+@keyframes loading2{
+  50%{
+    -webkit-transform: scaleY(.5)
+   }  
+   100% {
+    -webkit-transform: scaleY(5) ;
+    background-color:rgb(238, 106, 106);  
+  }
+  
+}
+
+/* توزيع الصفحه الاساسي */
+.mainContainer{
+  color:#747272;
+  background-color:white;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(2,fr);
+  /* هنا انا اديت الي مقاسهم ثابت رقم ثابت والي مقاسهم هيتغير مع الريسبونسف مقاس متغير */
+  grid-template-rows:620px 45px minmax(600px,auto) minmax(200px,auto) minmax(400px,auto);
+  /* وزعت الديفات الرئيسيه */
+  grid-template-areas: 
+  "header header"
+  "nav nav"
+  "first first"
+  "second second "
+  "third third "
+  "third third "
+  ;
+}
+
+/* حطيت صوره الهيرو  */
+header{
+  grid-area: header;
+  background-image: url(hero2.jpg);
+  background-size: cover;
+  background-position: bottom ;
+}
+/* -------------------------------------------------------------------------------------------------------- */
+
+/* عملت القائمه بالفليكس */
+nav{
+  grid-area: nav;
+  background-color: #252a34;
+  display: flex;
+  align-items: center ;
+  justify-content: space-around
+}
+
+.logo span{
+  color: #fb929e;
+}
+ul{
+  display: flex;
+  list-style: none;
+}
+ul li a{
+  text-decoration: none;
+  display: block;
+  color: white;
+  font-size: 1.2em;
+  padding: 12.5px
+}
+ul li a:hover{color:#fb929e;
+}
+/* ----------------------------------------------------------------------------------------------------------- */
+
+/* السيكشن الاول هنا مش هديله يعمل كام عمود هقوله كل ما يبقي في محتوي تعمل عمود اقل عرض ليه 550 بكسل لان الديفات عاوزها تبقي العرض دا */
+/* مش هديله يعمل كام صف هخليه هو يعمل الصفوف من نفسه وطولها يبقي متاخد من طول المحتوي الي هرجع احدده تحت */
+.first{
+  grid-area: first;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(550px,1fr));
+  align-items: center;
+  justify-items: center;
+}
+/* هنا بحدد عرض الديفات يكون نفس عرض الاعمده 550 بكسل  */
+.first div{
+  width: 550px;
+  margin: 10px ;
+}
+/* مفيش اي حاجه مهمه في اول ديف غير ان ادتله طول يخليه متناسب مع الديف الي جنبه في الشكل بس */
+.first div:first-child {
+  height: 300px;
+  text-align: center;
+}
+  
+.first div:first-child h2{
+  color: #fb929e;
+  border: 2px #fb929e dashed;
+  width: 40%;
+  margin: 0px auto;
+  }
+
+.first div:first-child article{
+  margin-top:20px;
+  text-align: justify;
+}
+
+/*  ثاني ديف حددتله طول مناسب للصور الي فيه وهيتقسم بالجريد 3 اعمده متساويه */
+.first div:last-child{
+  height: 600px;
+  display: grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-gap: 5px;
+}
+/* هوزع الصور علي ال 3 اعمده */
+.first div:last-child p:first-child{
+  grid-column: 1/2;
+  grid-row: 1/3;
+  background-image: url(cake6.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+.first div:last-child p:nth-child(2){
+  grid-column: 2/-1;
+  grid-row:1/2;
+  background-image: url(cake8.jpg);
+  background-size: cover;
+}
+.first div:last-child p:NTH-child(3){
+  grid-column: 2/3;
+  grid-row: 2/3;
+  background-image: url(cake2.jfif);
+  background-size: cover;
+  background-position:  left;
+}
+.first div:last-child p:NTH-child(4){
+  grid-column: 3/4;
+  grid-row: 2/4;
+  background-image: url(cake4.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+.first div:last-child p:NTH-child(5){
+  grid-column: 1/3;
+  grid-row: 3/4;
+  background-image: url(cake9.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+/* ------------------------------------------------------------------------------------------------------------ */
+
+/* السيكشن التاني فليكس عادي */
+/* لاحظ ان الموقع كل اجزائه بتاثر علي الباقي لانهم نفس العواميد الي بالجريد الرئيس فالفليكس مش هيبقي ريسبونسف بشكل كامل هيثبت عند عرض 550 الي هو عرض الديف الي فوقه*/
+
+.second { 
+  grid-area: second;
+  display: flex; 
+  flex-flow: row wrap;
+  margin: 20px 0px;
+  justify-content: center;
+}
+
+
+.second div img{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin:10px 50px;
+}
+.second h5{
+  margin: 0px 50px;
+}
+.second h6{
+  margin: 0px 75px;
+}
+.second button{
+  margin:5px 0px 0px 66px;
+  width: 70px;
+  height: 30px;
+  background-color: white;
+  border: 1px #fb929e solid;
+  border-radius: 25px;
+}
+.second button:hover{
+  background-color:#fb929e;
+  color: white;  
+  transition:background-color 1s linear ,color .25s ;
+
+}
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* السكشن الثالث بالفليكس */
+.third {
+
+  grid-area: third;
+  background-color: #252a34;
+  color: rgb(202, 200, 200);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  
+}
+.third div{
+  flex-basis:400px;
+  margin: 5% auto 0px auto;
+}
+.third h3{
+  color: white;
+}
+.third article{
+  padding: 2% 5% ;
+}
+.third input {
+  background-color: #4b5456;
+  border:  #4b5456;
+  width: 300px;
+  height: 25px;
+  margin: 10px 0px 20px 20px;
+ }
+ .third button{
+  background-color: #4b5456;
+  color: white;
+  border:1px solid #4b5456;
+  width: 40px;height:25px;
+}
